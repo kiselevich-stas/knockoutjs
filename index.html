@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перетаскивание элементов на Knockout.js с плавной анимацией</title>
+  <!-- Подключение стилей -->
+  <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+<div class="sortable" data-bind="sortable: { data: sections, allowDrop: true }">
+  <h1>Sortable Sections</h1>
+  <ul class="top-level" data-bind="foreach: sections">
+    <li>
+      <div data-bind="click: toggleExpanded, css: { 'expanded': expanded }" class="section">
+        <span data-bind="text: title"></span>
+        <div class="icon">
+          <!-- SVG иконка здесь -->
+        </div>
+      </div>
+      <ul data-bind="foreach: subSections, slideVisible: expanded, sortable: { data: subSections, connectClass: 'connectedSortable' }">
+        <li>
+          <div class="subsection">
+            <span data-bind="text: title"></span>
+            <div class="icon">
+              <!-- SVG иконка здесь -->
+            </div>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- Подключение библиотеки jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Подключение библиотеки jQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<!-- Подключение библиотеки Knockout.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+<!-- Подключение библиотеки knockout-dragdrop -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-dragdrop/2.6.1/knockout.dragdrop.min.js"></script>
+<!-- Подключение скрипта с логикой Knockout.js и knockout-dragdrop -->
+<script src="js/app.js"></script>
+</body>
+</html>
